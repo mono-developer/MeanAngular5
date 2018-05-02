@@ -1,0 +1,77 @@
+<section id="diaplayEvents">
+    <div class="row">
+        <div>
+            <input class="form-control serach_box" type="text" placeholder="Search Event Name.." [(ngModel)]="filterText" name="filter" (ngModelChange)="filterArray(filterText)">
+        </div>
+        <br>
+        <div *ngIf="allEvents && allEvents.length == 0" style="color:red;text-align:center">Sorry. No Events Found</div>
+        <div *ngFor="let event of allEvents; let i = index" class="col-xs-12 event_card">
+            <div class="inner_card">
+                <div class="title_style">
+                    <span class="key_data">Title </span>:
+                    <span class="upper_case">{{event.eventName}}</span>
+                    <a class="details_option"  target="_blank" routerLink="/event/details/{{event.eventId}}">Details</a>
+                    <span class="remove_option" *ngIf="event.editable" (click)="removeEvent(event.eventId)">
+                            <i class="fas fa-trash-alt"></i> Delete</span>
+                </div>
+                <div class="img_card">
+                    <div class="image_background">
+                        <img [src]="event.image" height="200px" style="width: 100%;
+                        max-width: 250px;">
+                    </div>
+
+                </div>
+                <div class="row event_desc">
+                    <div class="col-xs-12 col-sm-12">
+                        <span class="key_data">Description </span>:
+                        <span class="alignments" style="overflow:scroll">{{event.description}}</span>
+                    </div>
+                </div>
+                <div class="row event_desc">
+                    <div class="col-xs-12  col-md-6">
+                        <span class="key_data">Category </span>:
+                        <span *ngFor="let category of event.categoryId" class="alignments" title={{category.itemName}}>{{category.id}}</span>
+                    </div>
+                    <div class="col-xs-12 col-md-6">
+                        <span class="key_data">Event Date </span>:
+                        <span class="alignments">{{event.eventDate | date:'dd-MM-yyyy HH:mm:ss'}}</span>
+                    </div>
+                </div>
+
+                <div class="row event_likes">
+                    <div class="col-xs-6 col-sm-3">
+
+                        <span *ngIf=!event.alreadyLiked class="pointer nowrap" (click)="likeEvent(event.eventId,event.userId)">
+                            <i class="far fa-thumbs-up"></i>
+                            <span > Like
+                                <span *ngIf="event.totalLikes">({{event.totalLikes}})</span>
+                            </span>
+                        </span>
+                        <span *ngIf=event.alreadyLiked class="pointer nowrap" (click)="unlikeEvent(event.eventId,event.userId)">
+                            <i class="fas fa-thumbs-up like_color"></i>
+                            <span class="like_color"> Like
+                                <span *ngIf="event.totalLikes">({{event.totalLikes}})</span>
+                            </span>
+                        </span>
+                    </div>
+                    <div class="col-xs-6 col-sm-3 center_align">
+                        <div >
+                            <span *ngIf=!event.alreadyRsvp class="pointer nowrap" (click)="rsvpEvent(event.eventId,event.userId)">Rsvp
+                                <span *ngIf="event.totalRsvp">({{event.totalRsvp}})</span>
+                            </span>
+                            <span class="like_color pointer nowrap" *ngIf=event.alreadyRsvp (click)="uncheckRsvp(event.eventId,event.userId)" >Rsvp
+                                <i class="fas fa-check like_color"></i>
+                                <span *ngIf="event.totalRsvp">({{event.totalRsvp}})</span>
+                            </span>
+                        </div>
+                    </div>
+                    <div class="col-xs-12 col-sm-6" style="white-space: nowrap;overflow: hidden;text-overflow: ellipsis;">
+                        <span class="key_data">Location</span> :
+                        <span title={{event.location}} class="alignments">{{event.location}}</span>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>

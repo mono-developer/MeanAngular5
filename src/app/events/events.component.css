@@ -1,0 +1,99 @@
+.center_align{
+    text-align: center;
+    margin: 0 auto;
+    display: block;
+}
+.event_card{
+    height: 400px;
+    width: 100%;
+    margin-bottom: 30px;
+}
+.inner_card{
+    width: 60%;
+    margin: 0 auto;
+    box-shadow: 6px 6px 10px 2px #ccc;
+    padding: 5px 0px;
+    border: 1px solid gainsboro;
+    border-radius: 3px;
+}
+.img_card{
+    height: 70%;
+    padding: 0px 5px;
+    text-align: center;
+    border-bottom:1px solid #CDCDCD;
+}
+.event_desc{
+    height: 30%;
+    padding: 10px 0px;
+    border-bottom:1px solid #CDCDCD;
+}
+.event_likes{
+    height: 10%;
+    padding: 5px 0px;
+    /* border-top:1px solid #CDCDCD; */
+    /* border: 1px solid green; */
+}
+.alignments{
+    margin-left: 5px;
+    text-transform: capitalize;
+}
+.key_data{
+    color:#A7A7A7;
+    font-weight: bold;
+}
+.upper_case{
+    text-transform:uppercase;
+}
+.title_style{
+    padding: 8px 15px;
+    border-bottom:1px solid #CDCDCD;
+}
+.like_color{
+    color:blue;
+}
+.pointer{
+    cursor: pointer;
+}
+.checkbox{
+    margin-top:0px;
+}
+.datePicker{
+    width: 100%;
+    border-radius: 5px;
+    border: 1px solid #CCCCCC;
+    margin-top:5px;
+}
+.serach_box{
+    width: 60%;
+    margin: 0 auto;
+}
+.image_background{
+    background: #F9F9F9;
+    padding: 5px 0px;
+}
+.details_option{
+    float:right;
+    cursor:pointer;
+    color:blue;
+    padding: 0px 5px;
+}
+.remove_option{
+    float:right;
+    cursor:pointer;
+    margin-left: 20px;
+}
+.remove_option:hover{
+    color:red;
+}
+.nowrap{
+    white-space: nowrap;
+}
+
+@media only screen and (max-width: 767px) {
+    .inner_card{
+        width: 100%;
+    }
+    .serach_box{
+        width: 100%;
+    }
+}
